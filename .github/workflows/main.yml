@@ -19,6 +19,9 @@ jobs:
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           
+          # base
+          base: header, repositories
+          
           # isocalendar
           plugin_isocalendar: yes
           
@@ -32,5 +35,7 @@ jobs:
           plugin_languages_ignored: >-
             html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell,
             gnuplot
-          
+            
+          # people
+          plugin_people: yes
           
