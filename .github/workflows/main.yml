@@ -12,6 +12,16 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: lowlighter/metrics@latest
+      - name: Set time zone
+        run: sudo timedatectl set-timezone 'Asia/Shanghai'
+      - name: matrics
+        uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
+          
+          # activity
+          plugin_activity: yes
+          plugin_activity_days: 0
+          plugin_activity_filter: issue, pr, release, fork, review, ref/create
+          
+          
