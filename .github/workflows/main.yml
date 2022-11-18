@@ -19,8 +19,9 @@ jobs:
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           
-          # base
+          # basic
           base: header, repositories
+          config_display: columns
           
           # isocalendar
           plugin_isocalendar: yes
