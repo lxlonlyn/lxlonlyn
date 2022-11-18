@@ -11,23 +11,17 @@ jobs:
     steps:
       - name: Set time zone
         run: sudo timedatectl set-timezone 'Asia/Shanghai'
-      - name: matrics
+      
+      # general model
+      - name: general
         uses: lowlighter/metrics@latest
         with:
-          filename: metrics.classic.svg
+          filename: general.svg
           token: ${{ secrets.METRICS_TOKEN }}
-          
-          # basic
           base: header, repositories
-          # config_display: columns
           
           # isocalendar
           plugin_isocalendar: yes
-          
-          # activity
-          plugin_activity: yes
-          plugin_activity_days: 0
-          plugin_activity_filter: issue, pr, release, fork, review, ref/create
           
           # language
           plugin_languages: yes
@@ -35,6 +29,33 @@ jobs:
             html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell,
             gnuplot
             
+          config_order: base.header, isocalendar, language, base.repositories
+      
+      # achievement
+      - name: achievement
+        uses: lowlighter/metrics@latest
+        with:
+          filename: achievement.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: ""
+          
+          # achievement
+          plugin_achievements: yes
+          plugin_achievements_display: compact
+      
+      # people & activity
+      - name: people
+        uses: lowlighter/metrics@latest
+        with:
+          filename: people.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: ""
+          
+          # activity
+          plugin_activity: yes
+          plugin_activity_days: 0
+          plugin_activity_filter: issue, pr, release, fork, review, ref/create
+          
           # people
           plugin_people: yes
           
