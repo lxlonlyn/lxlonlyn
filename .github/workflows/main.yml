@@ -1,10 +1,7 @@
 name: Metrics
 on:
-  # Schedule daily updates
   schedule: [{cron: "0 0 * * *"}]
-  # (optional) Run workflow manually
   workflow_dispatch:
-  # (optional) Run workflow when pushing on master/main
   push: {branches: ["master", "main"]}
 jobs:
   github-metrics:
@@ -22,7 +19,7 @@ jobs:
           
           # basic
           base: header, repositories
-          config_display: columns
+          # config_display: columns
           
           # isocalendar
           plugin_isocalendar: yes
